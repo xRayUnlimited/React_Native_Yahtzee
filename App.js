@@ -45,14 +45,14 @@ export default class App extends React.Component {
     return (
       <NativeRouter>
         <Container>
-          <Header>
+          <Header style={styles.header}>
             <Left>
-              <Button onPress={() => this.toggleDrawer()}>
-                <Ionicons name="md-menu" color="black" size={30} />
+              <Button transparent onPress={() => this.toggleDrawer()}>
+                <Ionicons name="md-menu" color="white" size={30} />
               </Button>
             </Left>
             <Body>
-              <Title>Yahtzee</Title>
+              <Title style={styles.title}>Yahtzee</Title>
             </Body>
             <Right />
           </Header>
@@ -86,5 +86,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  header: {
+    backgroundColor: '#911904',
+  },
+  title: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontStyle: 'italic',
+    fontSize: 30,
+    textShadowColor: "#a79d20",
+    textShadowRadius: 2,
+    textShadowOffset: {width: 2, height: 2},
   },
 });
