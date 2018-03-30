@@ -46,41 +46,41 @@ export default class App extends React.Component {
 
   render() {
     return (
-    <Provider store={store}>
-      <NativeRouter>
-        <Container>
-          <Header style={styles.header}>
-            <Left>
-              <Button transparent onPress={() => this.toggleDrawer()}>
-                <Ionicons name="md-menu" color="white" size={30} />
-              </Button>
-            </Left>
-            <Body>
-              <Title style={styles.title}>Yahtzee</Title>
-            </Body>
-            <Right />
-          </Header>
-          <Content padder>
-            <Drawer
-              ref={ ref => { this.drawer = ref }}
-              content={<Sidebar close={() => this.toggleDrawer()}
-              navigator={this._navigator} />}
-              onClose={() => this.closeDrawer()}
-            ></Drawer>
-            { this.state.drawerOpen ? null :
-              <View>
-                <Switch>
-                  <ProtectedRoute exact path="/" component={Yahtzee} />
-                  <Route exact path="/login" component={Login} />
-                  <Route exact path="/register" component={Register} />
-                  <ProtectedRoute exact path="/scores" component={Scores} />
-                </Switch>
-              </View>
-            }
-          </Content>
-        </Container>
-      </NativeRouter>
-    </Provider>
+      <Provider store={store}>
+        <NativeRouter>
+          <Container>
+            <Header style={styles.header}>
+              <Left>
+                <Button transparent onPress={() => this.toggleDrawer()}>
+                  <Ionicons name="md-menu" color="white" size={30} />
+                </Button>
+              </Left>
+              <Body>
+                <Title style={styles.title}>Yahtzee</Title>
+              </Body>
+              <Right />
+            </Header>
+            <Content padder>
+              <Drawer
+                ref={ ref => { this.drawer = ref }}
+                content={<Sidebar close={() => this.toggleDrawer()}
+                navigator={this._navigator} />}
+                onClose={() => this.closeDrawer()}
+              ></Drawer>
+              { this.state.drawerOpen ? null :
+                <View>
+                  <Switch>
+                    <ProtectedRoute exact path="/" component={Yahtzee} />
+                    <Route exact path="/login" component={Login} />
+                    <Route exact path="/register" component={Register} />
+                    <ProtectedRoute exact path="/scores" component={Scores} />
+                  </Switch>
+                </View>
+              }
+            </Content>
+          </Container>
+        </NativeRouter>
+      </Provider>
     );
   }
 }
