@@ -3,9 +3,15 @@ import { withRouter } from 'react-router-native';
 import { Text, Platform, Dimensions } from 'react-native';
 import { List, ListItem, Left, Body } from 'native-base';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { connect } from 'react-redux';
+import { logout } from '../actions/auth';
 const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;
 
+const loggedOutNavs = [
+  { name: 'Login', path: '/login', icon: "login" },
+  { name: 'Register', path: '/register', icon: "sign-text" }
+]
 const navs = [
   { name: 'Yahtzee', path: '/', icon: "dice-6" },
   { name: 'Scores', path: '/scores', icon: "clipboard-alert" },

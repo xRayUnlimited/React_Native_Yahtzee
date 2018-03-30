@@ -7,8 +7,8 @@ export const NEW_GAME = 'NEW_GAME';
 
 export const postScore = (value) => {
   return (dispatch) => {
-    axios.post('/api/scores', { score: { value }})
-      .then( ({ headers }) => {
+    axios.post('/api/scores', { score: { value } })
+      .then(({ headers }) => {
         dispatch({ type: 'HEADERS', headers })
       })
   }
@@ -30,7 +30,7 @@ export const rollDice = () => {
   return (dispatch, getState) => {
     const { keep, dice } = getState().currentGame
 
-    const newDice = dice.map( (value, index) => {
+    const newDice = dice.map((value, index) => {
       if (keep.includes(index))
         return value
       return Math.floor(Math.random() * 6) + 1
@@ -46,7 +46,7 @@ export const toggleKept = (index) => {
     let updated;
 
     if (keep.includes(index))
-      updated = keep.filter( k => k !== index )
+      updated = keep.filter(k => k !== index)
     else
       updated = [...keep, index]
 

@@ -1,5 +1,5 @@
-import { 
-  ROLL_DICE, 
+import {
+  ROLL_DICE,
   TOGGLE_KEPT,
   UPDATE_SCORE,
   RESET_ROLL,
@@ -16,7 +16,7 @@ const scores = [
   { section: 'lower', name: 'Three Of A Kind', score: null, addAll: true },
   { section: 'lower', name: 'Four Of A Kind', score: null, addAll: true },
   { section: 'lower', name: 'Full House', score: null },
-  { section: 'lower', name: 'Low Straight', score: null }, 
+  { section: 'lower', name: 'Low Straight', score: null },
   { section: 'lower', name: 'High Straight', score: null },
   { section: 'lower', name: 'Yahtzee', score: null },
   { section: 'lower', name: 'Chance', score: null, addAll: true },
@@ -33,18 +33,18 @@ const currentGame = (
 ) => {
   switch (action.type) {
     case NEW_GAME:
-     return {
-       roll: 0,
-       dice: [...new Array(5)],
-       keep: [],
-       scores: scores.map( s => { return { ...s, score: null } } )
-     }
+      return {
+        roll: 0,
+        dice: [...new Array(5)],
+        keep: [],
+        scores: scores.map(s => { return { ...s, score: null } })
+      }
     case RESET_ROLL:
       return {
         ...state,
         roll: 0,
         dice: [...new Array(5)],
-        keep: [] 
+        keep: []
       }
     case UPDATE_SCORE:
       return {

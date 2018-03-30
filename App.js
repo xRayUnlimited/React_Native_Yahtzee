@@ -19,6 +19,9 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Scores from './components/Scores';
 import Sidebar from './components/Sidebar';
+import { Provider } from 'react-redux';
+import ProtectedRoute from './components/ProtectedRoute';
+import store from './store';
 
 export default class App extends React.Component {
   state = { drawerOpen: false }
@@ -43,6 +46,7 @@ export default class App extends React.Component {
 
   render() {
     return (
+    <Provider store={store}>
       <NativeRouter>
         <Container>
           <Header style={styles.header}>
@@ -66,16 +70,17 @@ export default class App extends React.Component {
             { this.state.drawerOpen ? null :
               <View>
                 <Switch>
-                  <Route exact path="/" component={Yahtzee} />
+                  <ProtectedRoute exact path="/" component={Yahtzee} />
                   <Route exact path="/login" component={Login} />
                   <Route exact path="/register" component={Register} />
-                  <Route exact path="/scores" component={Scores} />
+                  <ProtectedRoute exact path="/scores" component={Scores} />
                 </Switch>
               </View>
             }
           </Content>
         </Container>
       </NativeRouter>
+    </Provider>
     );
   }
 }
